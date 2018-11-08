@@ -1,0 +1,12 @@
+
+.noteTextArea{
+  min-width:200px;
+}
+
+.td-success {
+  color: green;
+}
+
+.td-danger {
+  color: red;
+}
