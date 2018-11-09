@@ -2,9 +2,10 @@
 const fs = require('fs');
 const http = require('http');
 const mysql = require('mysql');
+const studentSignUp_Handler = require('./studentSignup_handler');
 
 
-let db = mysql.createConnection({
+let db = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "",
@@ -12,13 +13,10 @@ let db = mysql.createConnection({
 });
 
 
-
-
   let s = http.createServer(
     (req, res) => {
         console.log(`Request: ${req.method} URL: ${req.url}`)
         if (req.method == 'GET') {
-            console.log('cazzo');
         }
         if (req.method == 'POST') {
             console.log('POST received');
@@ -31,6 +29,7 @@ let db = mysql.createConnection({
                 console.log('No more data.')
                 try {
                     let msg = JSON.parse(data);
+                    console.log(msg);
                     switch(msg.req_type) {
                         case "studentLogin":
 
@@ -38,7 +37,8 @@ let db = mysql.createConnection({
                         case "professorLogin":
                             break;
                         case "studentSignup":
-                            studentSignupHandler(db, msg.data, res);
+                            console.log('studentSignUp');
+                            studentSignUp_Handler(db, msg.data, res);
                             break;
                         case "studentAttendance":
                             break;
@@ -61,5 +61,5 @@ let db = mysql.createConnection({
 
 let io = require('socket.io').listen(s);
 
-s.listen(80);
-console.log("Server is listening on port 80");
+s.listen(8000);
+console.log("Server is listening on port 8000");
