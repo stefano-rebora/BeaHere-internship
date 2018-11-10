@@ -14,6 +14,7 @@ function sanitize_input($data) {
 function check_logIn ($user , $pass) {
     
 	$connection= startConnection();
+	$stm = "";
 	
     if ($user == "admin") { // query for admin's password
 		$stm = $connection->prepare("SELECT name, surname, password FROM professor WHERE id = -1") ;

@@ -30,6 +30,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="./attendances.php">Visualizza presenze</a>
                     <a class="dropdown-item" href="#">Modifica presenze</a>
+                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="courseDropdown" role="button" data-toggle="dropdown"
@@ -38,6 +39,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#AddCourseModal">Crea nuovo corso</a>
+                </div>
             </li>
 
             <li class="nav-item">
@@ -52,7 +54,22 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#AddProfessorModal">Crea account</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ResetProfessorModal">Reset password</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#RemoveProfessorModal">Cancella account</a>
+                    </div>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="professorDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Studenti
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ResetStudentModal">Reset password</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#RemoveStudentModal">Cancella account</a>
+                    </div>
+                </li>
+                
 
             <?php } ?>
 

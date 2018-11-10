@@ -31,7 +31,7 @@ require 'script/utilities.php';
     <div class="container-fluid">
         <div class="container" style="margin-top: 1em; min-height: 100vh;">
             <!-- Password form -->
-            <form action="/action_page.php">
+            <form action="script/changeProfPassword_script.php" method="post">
                 <div class="card person-card">
                     <div class="card-body">
                         <!-- Sex image -->
@@ -44,18 +44,18 @@ require 'script/utilities.php';
                         <div class="row">
 
                             <div class="form-group col-md-4">
-                                <label for="password" class="col-form-label">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Digita password"
+                                <label for="changePassword" class="col-form-label">Password</label>
+                                <input type="password" class="form-control" id="changePassword" name="password" placeholder="Digita password"
                                     required>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="new_password" class="col-form-label">Nuova pasword</label>
-                                <input type="password" class="form-control" id="new_password" placeholder="Digita nuova password"
+                                <label for="changeNewPassword" class="col-form-label">Nuova pasword</label>
+                                <input type="password" class="form-control" id="changeNewPassword" name="new_password"  placeholder="Digita nuova password"
                                     required>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="password_conf" class="col-form-label">Conferma nuova password</label>
-                                <input type="password" class="form-control" id="password_conf" placeholder="Conferma nuova password"
+                                <label for="changePasswordConf" class="col-form-label">Conferma nuova password</label>
+                                <input type="password" class="form-control" id="changePasswordConf" name="password_conf"  placeholder="Conferma nuova password"
                                     required>
                             </div>
                         </div>

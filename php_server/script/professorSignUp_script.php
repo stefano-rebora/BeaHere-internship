@@ -11,16 +11,16 @@ $noErrors = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
-   check_empty($_POST["name"] , "nome" , $_SESSION["message"]);
-   $name = sanitize_input($_POST["name"]);
+   check_empty($_POST["prof_name"] , "nome" , $_SESSION["message"]);
+   $name = sanitize_input($_POST["prof_name"]);
    // check if name only contains letters
    if (!preg_match("/^[a-zA-Z' ]*$/",$name)) {
 	 $noErrors = false;
      $_SESSION["message"] ="Nome non valido: consentite solo lettere alfabetiche";
    }
   	
-    check_empty($_POST["surname"] , "cognome" , $_SESSION["message"]);
-    $surname = sanitize_input($_POST["surname"]);
+    check_empty($_POST["prof_surname"] , "cognome" , $_SESSION["message"]);
+    $surname = sanitize_input($_POST["prof_surname"]);
     // check if surname only contains letters
     if (!preg_match("/^[a-zA-Z' ]*$/",$surname)) {
 	  $noErrors = false;
@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   
   
-    check_empty($_POST["email"] , "email" , $_SESSION["message"]);
-    $email = sanitize_input($_POST["email"]);
+    check_empty($_POST["prof_email"] , "email" , $_SESSION["message"]);
+    $email = sanitize_input($_POST["prof_email"]);
     // check if e-mail address is well-formed
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 	  $noErrors = false;
@@ -45,13 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $_SESSION["message"] = "Id professore non valido: deve essere formato da 6 cifre";
     }
 	
-    check_empty($_POST["password"] , "password" , $_SESSION["message"]);
-    $password = sanitize_input($_POST["password"]);
+    check_empty($_POST["prof_password"] , "password" , $_SESSION["message"]);
+    $password = sanitize_input($_POST["prof_password"]);
 	  $hashPass = password_hash($password, PASSWORD_DEFAULT);
   
    
-    check_empty($_POST["password_confirmation"] , "conferma password" , $_SESSION["message"]);
-    $repassword = sanitize_input($_POST["password_confirmation"]);
+    check_empty($_POST["prof_password_conf"] , "conferma password" , $_SESSION["message"]);
+    $repassword = sanitize_input($_POST["prof_password_conf"]);
 
 	if ($repassword !== $password) {
 	  $noErrors = false;

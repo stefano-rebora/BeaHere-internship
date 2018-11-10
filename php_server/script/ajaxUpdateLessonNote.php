@@ -20,7 +20,7 @@ if (isset ($_POST["lessonId"])&& isset ($_POST["noteInput"]) ) {
     $res = $stm->bind_param("ss" , $noteInput, $lessonId) ;
     $res = $stm->execute();
 
-    if (!$res) {
+    if (!$res || $stm->affected_rows == 0) {
         echo "Modifiche fallite";
     }
     else {

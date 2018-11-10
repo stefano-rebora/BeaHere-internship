@@ -26,7 +26,7 @@ Create table teaching (
     professor_id int(7) not null,
     course_id int(5) not null,
     PRIMARY KEY(professor_id, course_id),
-    foreign key(professor_id) references professor(id) ON UPDATE CASCADE,
+    foreign key(professor_id) references professor(id) ON UPDATE CASCADE ON DELETE CASCADE,
     foreign key(course_id) references course(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
@@ -37,12 +37,12 @@ Create table lesson (
     start time not null,
     end time not null,
     course_id int(5) not null,
-	professor_id int(7) not null,
+	professor_id int(7),
 	note varchar(300),
     PRIMARY KEY(id),
 	UNIQUE (date, minor_id),
     foreign key(course_id) references course(id) ON UPDATE CASCADE ON DELETE CASCADE,
-	foreign key(professor_id) references professor(id) ON UPDATE CASCADE ON DELETE NO ACTION
+	foreign key(professor_id) references professor(id) ON UPDATE CASCADE ON DELETE SET NULL
 	
 );
 
