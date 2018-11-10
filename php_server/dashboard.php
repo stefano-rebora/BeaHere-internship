@@ -35,7 +35,7 @@ require 'script/utilities.php';
                 <div class="card person-card">
                     <div class="card-body">
                         <!-- Sex image -->
-                        <img id="img_person" class="person-img" src="https://visualpharm.com/assets/217/Life%20Cycle-595b40b75ba036ed117d9ef0.svg">
+                        <img id="img_person" class="person-img" src="img/logo.png">
                         <h2 id="username" class="card-title">
                             <?php echo $_SESSION["name"]." ".$_SESSION["surname"]." (".$_SESSION["userId"].")" ?>
                         </h2>

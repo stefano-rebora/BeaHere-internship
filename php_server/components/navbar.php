@@ -7,7 +7,7 @@
 
 <!-- NavBar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="dashboard.php">
         <img src="img/brand.png"  alt="Logo" style="width:150px;">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
