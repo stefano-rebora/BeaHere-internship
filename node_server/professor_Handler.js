@@ -1,13 +1,9 @@
 const bcrypt = require('bcrypt');
 
-//var exports = module.exports = {};
-
 module.exports.professorLogin = function (db, msg, res) {
-    //console.log(msg.id);
-    //console.log(msg.password);
 
     if (msg.password.toString().trim() == "" || msg.id.toString().trim() == "") {
-        console.log("Empty id / password");
+        console.log("Id and Password cannot be empty");
         res.end(JSON.stringify({ result: false, err_msg: "Invalid Login", data: "" }));
         return;
     }
@@ -18,22 +14,28 @@ module.exports.professorLogin = function (db, msg, res) {
             return;
         }
 
-        //console.log(hash);
-
-        let query = "SELECT * FROM professor WHERE id = ? AND password = ?";
-        let attributes = [msg.username, hash]; 
+        let query = "SELECT password FROM professor WHERE id = ?";
+        let attributes = [msg.id];
+        let stored_hash = '';
         db.query(query, attributes, (err, result, fields) => {
-            console.log(query);
-            console.log(attributes);
             if (err) {
-                console.log(err);
                 console.log("DB - Error");
                 res.end(JSON.stringify({ result: false, err_msg: "DB error", data: "" }));
             }
+            stored_hash = result[0]['password'];
+            console.log(stored_hash);
+
+            bcrypt.compare(msg.password, stored_hash, function(err, res) {
+                if (err) {
+                    res.end(JSON.stringify({ result: false, err_msg: "Hash Compare Error", data: "" }));
+                    return;
+                }
+                console.log(res); //se true ok login, e quindi...
+            });
+
         });
+
 
     });
 
 }
-
-//module.exports = studentSignUpHandler;
