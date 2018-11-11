@@ -50,7 +50,7 @@ Create table attendance (
     student_id int(7) not null,
     lesson_date date not null,
     lesson_minor_id int(6) not null,
-    time time not null,
+    time time,
     PRIMARY KEY(student_id, lesson_date, lesson_minor_id),
     foreign key(student_id) references student(id) ON UPDATE CASCADE ON DELETE CASCADE,
     foreign key(lesson_date, lesson_minor_id) references lesson(date, minor_id) ON UPDATE CASCADE ON DELETE CASCADE

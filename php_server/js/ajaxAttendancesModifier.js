@@ -6,7 +6,8 @@ function ajaxAddAttendance(formID) {
             e.preventDefault();
 
             // AJAX call
-            $.get('script/ajaxAddAttendance.php?'+$("#"+formID).serialize(), function (response) {
+            $.post('script/ajaxAddAttendance.php?',$("#"+formID).serialize(), function (response) {
+                $('#AddAttendanceModal').modal('hide');
                 if($.trim(response) === "OK"){
                     $("#succesModalAlert").text("Presenza aggiunta con successo. Se vuoi visualizzare le modifiche ricarica la pagina");
                     $('#MessageModal').modal('show');
@@ -32,7 +33,8 @@ function ajaxRemoveLesson(formID) {
             e.preventDefault();
 
             // AJAX call
-            $.get('script/ajaxRemoveLesson.php?'+$("#"+formID).serialize(), function (response) {
+            $.post('script/ajaxRemoveLesson.php?',$("#"+formID).serialize(), function (response) {
+                $('#RemoveLessonModal').modal('hide');
                 if($.trim(response) === "OK"){
                     $("#succesModalAlert").text("Lezione cancellata con successo. Se vuoi visualizzare le modifiche ricarica la pagina");
                     $('#MessageModal').modal('show');
