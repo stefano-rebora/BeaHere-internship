@@ -19,7 +19,6 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">Home
-                    <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item dropdown">
@@ -28,8 +27,7 @@
                     Presenze
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="./attendances.php">Visualizza presenze</a>
-                    <a class="dropdown-item" href="#">Modifica presenze</a>
+                    <a class="dropdown-item" href="./attendances.php">Gestisci presenze</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

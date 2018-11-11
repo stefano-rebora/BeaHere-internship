@@ -19,6 +19,9 @@ function ajaxGetRegister(formID) {
                 $("#tableHead").append("<th class='no-sort'>Note Lezione</th>");
                 $("#tableHead").append("<th class='no-sort'></th>");
 
+                var tableTitle = $("#registerId option:selected").text();
+                $("#tableCaption").text(tableTitle);
+
                 // Add lessons rows
                 $.each(data["lessons"], function (l, item) {
                     

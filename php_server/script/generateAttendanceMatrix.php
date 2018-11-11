@@ -10,6 +10,7 @@ if (isset ($_GET["attendanceId"])) {
 
     $connection= startConnection();
 
+    $lessonsIds = array();
     $lessonsList = array();
     $studentsList = array();
     $attCounter = array();
@@ -17,13 +18,14 @@ if (isset ($_GET["attendanceId"])) {
 
     // Get the list of all lessons
 
-    $stm = $connection->prepare("SELECT date, start, end FROM lesson WHERE lesson.course_id = ? ORDER BY lesson.date, lesson.start") ;
+    $stm = $connection->prepare("SELECT id, date, start, end FROM lesson WHERE lesson.course_id = ? ORDER BY lesson.date, lesson.start") ;
     $res = $stm->bind_param("s" , $courseId) ;
     $res = $stm->execute();
-    $stm->bind_result($ldate,$lstart, $lend);
+    $stm->bind_result($lid,$ldate,$lstart, $lend);
 
     
     while ($stm->fetch()){
+        $lessonsIds[] = $lid;
         $lessonsList[] = nl2br($ldate."\n".$lstart."-".$lend);
     }
 
@@ -67,6 +69,7 @@ if (isset ($_GET["attendanceId"])) {
 
     header('Content-Type: application/json');
     $payload = array();
+    $payload["lessonsIds"] = $lessonsIds;
     $payload["lessons"] = $lessonsList;
     $payload["students"] = $studentsList;
     $payload["attPerc"] = $attCounter;

@@ -20,6 +20,7 @@ require 'script/utilities.php';
 
     <script src="js/ajaxDropdown.js"></script>
     <script src="js/ajaxAttendances.js"></script>
+    <script src="js/ajaxAttendancesModifier.js"></script>
     <link href="./css/dashBoard.css" rel="stylesheet">
     <link href="./css/attTable.css" rel="stylesheet">
     
@@ -28,17 +29,22 @@ require 'script/utilities.php';
     <script>
         // ajax functions for dropdown courses list loading
         ajaxDropdownUpdate('<?php if ($_SESSION["userId"]== "admin") echo "all"; else echo $_SESSION['userId'];?>', "course", "attendanceId");
-
-        //ajaxDropdownUpdate('all', "course", "attendanceId");
-
+        
+        // ajax functions for attendaces table loading
         ajaxGetAttendances("attForm");
+
+        // ajax functions for adding attendance
+        ajaxAddAttendance("addAttendanceForm");
+
+        // ajax functions for removing lesson
+        ajaxRemoveLesson("removeLessonForm");
 
     </script>
 </head>
 
 <body>
 
-
+    <?php require 'components/attendancesModal.php' ?>
     <?php require 'components/navbar.php' ?>
 
     <div class="container-fluid">
@@ -53,13 +59,14 @@ require 'script/utilities.php';
                         <option value="" disabled selected>Seleziona corso</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-success">Visualizza presenze</button>
+                <button type="submit" class="btn btn-success">Gestisci presenze</button>
                 <br>
                 <br>
             </form>
             
             <div class="table-responsive">
-                <table class="table table-striped" id="attTable">
+                <table class="table table-striped top" id="attTable">
+                    <caption id="tableCaption"></caption>
                     <thead>
                         <tr id="tableHead">
                         </tr>

@@ -42,7 +42,7 @@ if (!isset($_SESSION["userId"]))  exit ('Permission denied');
     </div>
 </div>
 
-
+<!-- FORMS ONLY FOR THE ADMIN -->
 <?php if ($_SESSION["userId"]== "admin") { ?>
 
 <!-- Create Professor Account Form Modal -->
@@ -110,7 +110,7 @@ if (!isset($_SESSION["userId"]))  exit ('Permission denied');
                 <form method="post" action="script/resetPassword_script.php">     
                 
                     <div class="form-group">
-                        <label for="resetProfId" class="col-form-label">Password</label>
+                        <label for="resetProfId" class="col-form-label">Id professore</label>
                         <input type="text" class="form-control" id="resetProfId" name="resetProfId" placeholder="ID Professore">
                     </div>
 
@@ -151,7 +151,7 @@ if (!isset($_SESSION["userId"]))  exit ('Permission denied');
                 <form method="post" action="script/removeAccount_script.php">     
                 
                     <div class="form-group">
-                        <label for="removeProfId" class="col-form-label">Password</label>
+                        <label for="removeProfId" class="col-form-label">Id professore</label>
                         <input type="text" class="form-control" id="removeProfId" name="removeProfId" placeholder="ID Professore">
                     </div>
                     <div class="row">
@@ -181,7 +181,7 @@ if (!isset($_SESSION["userId"]))  exit ('Permission denied');
                 <form method="post" action="script/resetPassword_script.php">     
                 
                     <div class="form-group">
-                        <label for="resetStudentId" class="col-form-label">Password</label>
+                        <label for="resetStudentId" class="col-form-label">Id studente</label>
                         <input type="text" class="form-control" id="resetStudentId" name="resetStudentId" placeholder="ID Studente">
                     </div>
 
@@ -222,7 +222,7 @@ if (!isset($_SESSION["userId"]))  exit ('Permission denied');
                 <form method="post" action="script/removeAccount_script.php">     
                 
                     <div class="form-group">
-                        <label for="removeStudentId" class="col-form-label">Password</label>
+                        <label for="removeStudentId" class="col-form-label">Id studente</label>
                         <input type="text" class="form-control" id="removeStudentId" name="removeStudentId" placeholder="ID Studente">
                     </div>
                     <div class="row">

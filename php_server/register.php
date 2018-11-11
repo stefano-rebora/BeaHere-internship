@@ -57,7 +57,8 @@ require 'script/utilities.php';
                 <br>
             </form>
             <div class="table-responsive">
-                <table class="table table-striped" id="attTable">
+                <table class="table table-striped top" id="attTable">
+                    <caption id="tableCaption"></caption>
                     <thead>
                         <tr id="tableHead">
                         </tr>

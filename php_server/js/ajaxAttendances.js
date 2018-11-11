@@ -12,13 +12,37 @@ function ajaxGetAttendances(formID) {
                     $('#attTable').DataTable().destroy();
                 }
 
-                // Remove old elements and add new elements
+                
+                // Remove old elements from dropdown lists of attendance modifier forms
+                $("#attLessonId").empty();
+                $("#attLessonId").append('<option value="" disabled selected>Seleziona lezione</option>');
+                $("#removeLessonId").empty();
+                $("#removeLessonId").append('<option value="" disabled selected>Seleziona lezione</option>');
+                
+                // Add new titles to attendance modifier forms
+                var tableTitle = $("#attendanceId option:selected").text();
+                $("#addAttCourseTitle").text(tableTitle);
+                $("#removeLessonCourseTitle").text(tableTitle);
+
+                // Remove old elements from the table and add new elements
                 $("#tableHead").empty();
                 $("#tableBody").empty();
                 $("#tableHead").append("<th>Studente</th>");
                 $("#tableHead").append("<th>Percentuale Presenze</th>");
+                
+
+                
+                $("#tableCaption").text(tableTitle);
+
+
+                
+                // Add lesson columns to table
                 $.each(data["lessons"], function (i, item) {
                     $("#tableHead").append("<th class='no-sort'>" + item + "</th>");
+                    
+                    // Add new elements to dropdown lists of attendance modifier forms
+                    $("#attLessonId").append("<option value=\""+ data["lessonsIds"][i] + "\">" + item + "</option");
+                    $("#removeLessonId").append("<option value=\""+ data["lessonsIds"][i] + "\">" + item + "</option");
                 });
 
                 // Add student rows
@@ -46,7 +70,12 @@ function ajaxGetAttendances(formID) {
                     "info":     false,
                     "columnDefs": [{ orderable: false, targets:  "no-sort"}],
                     buttons: [
-                        { extend: 'excel', text: 'Download Excel' }
+                        { extend: 'excel', text: 'Download Excel' },
+
+                        // Attendance modifier form buttons
+                        { text: 'Aggiungi Presenza', action:function(){$('#AddAttendanceModal').modal('show');} },
+                        { text: 'Cancella Lezione', action:function(){$('#RemoveLessonModal').modal('show');} }
+
                     ]
                 });
                

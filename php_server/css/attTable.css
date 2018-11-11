@@ -10,3 +10,7 @@
 .td-danger {
   color: red;
 }
+
+.top caption {
+  caption-side: top;
+}
