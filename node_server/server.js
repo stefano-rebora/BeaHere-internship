@@ -2,18 +2,13 @@
 const fs = require('fs');
 const http = require('http');
 const mysql = require('mysql');
-const studentSignUp_Handler = require('./studentSignup_handler');
+//const studentSignUp_Handler = require('./studentSignup_handler');
 
+var professor_Handler = require("./professor_Handler.js");
+var student_Handler = require("./student_Handler.js");
+var database = require("./database.js");
 
-let db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "stage"
-});
-
-
-  let s = http.createServer(
+let s = http.createServer(
     (req, res) => {
         console.log(`Request: ${req.method} URL: ${req.url}`)
         if (req.method == 'GET') {
@@ -30,24 +25,25 @@ let db = mysql.createPool({
                 try {
                     let msg = JSON.parse(data);
                     console.log(msg);
-                    switch(msg.req_type) {
+                    switch (msg.req_type) {
                         case "studentLogin":
-
                             break;
                         case "professorLogin":
+                            console.log('professorLogin');
+                            professor_Handler.professorLogin(database.db, msg.data, res);
                             break;
                         case "studentSignup":
                             console.log('studentSignUp');
-                            studentSignUp_Handler(db, msg.data, res);
+                            student_Handler.studentSignup(database.db, msg.data, res);
                             break;
                         case "studentAttendance":
                             break;
                         default:
-                            res.end(JSON.stringify({result: false, err_msg: "Invalid Request", data: ""}))
+                            res.end(JSON.stringify({ result: false, err_msg: "Invalid Request", data: "" }))
                     }
 
 
-                } catch(err) {
+                } catch (err) {
 
                 }
             })
@@ -59,7 +55,8 @@ let db = mysql.createPool({
         }
     })
 
-let io = require('socket.io').listen(s);
+//let io = require('socket.io').listen(s);
 
 s.listen(8000);
 console.log("Server is listening on port 8000");
+//console.log(s.address());

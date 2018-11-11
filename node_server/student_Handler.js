@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 
-var studentSignUpHandler = function studentSignupHandler(db, msg, res) {
+//var exports = module.exports = {};
+
+module.exports.studentSignup = function(db, msg, res) {
     console.log(msg.password+" "+ msg.r_password)
 
     if (msg.password.toString().trim() === msg.r_password.toString().trim()) {
@@ -31,4 +33,4 @@ var studentSignUpHandler = function studentSignupHandler(db, msg, res) {
 
 }
 
-module.exports = studentSignUpHandler;
+//module.exports = studentSignUpHandler;
