@@ -16,6 +16,7 @@ require 'script/utilities.php';
     <script type="text/javascript" charset="utf8" src="lib/DataTables/JSZip-2.5.0/jszip.min.js"></script>
     <script type="text/javascript" charset="utf8" src="lib/DataTables/Buttons-1.5.4/js/buttons.html5.min.js"></script>
     <script type="text/javascript" charset="utf8" src="lib/DataTables/Buttons-1.5.4/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="lib/chart/Chart.min.js"></script>
 
 
     <script src="js/ajaxDropdown.js"></script>
@@ -63,8 +64,13 @@ require 'script/utilities.php';
                 <br>
                 <br>
             </form>
+
+            <!--<canvas id="attChart" width="200" height="50"></canvas> -->
+            <div class="chart-container" >
+                <canvas id="attChart"></canvas>
+            </div>
             
-            <div class="table-responsive">
+            <div class="table-responsive table-top">
                 <table class="table table-striped top" id="attTable">
                     <caption id="tableCaption"></caption>
                     <thead>
@@ -75,10 +81,7 @@ require 'script/utilities.php';
                     </tbody>
                 </table>
             </div>
-
         </div>
-
-
 
     </div>
 

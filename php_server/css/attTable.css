@@ -14,3 +14,14 @@
 .top caption {
   caption-side: top;
 }
+
+.table-top{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.chart-container{
+  height: 50vh;
+  min-height: 200px;
+  position: relative;
+}

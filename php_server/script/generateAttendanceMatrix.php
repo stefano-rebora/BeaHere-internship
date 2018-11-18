@@ -12,6 +12,7 @@ if (isset ($_GET["attendanceId"])) {
 
     $lessonsIds = array();
     $lessonsList = array();
+    $lessonCounter = array();
     $studentsList = array();
     $attCounter = array();
     $attendanceMatrix = array();
@@ -26,7 +27,8 @@ if (isset ($_GET["attendanceId"])) {
     
     while ($stm->fetch()){
         $lessonsIds[] = $lid;
-        $lessonsList[] = nl2br($ldate."\n".$lstart."-".$lend);
+        $lessonsList[] = $ldate."\n".$lstart."-".$lend;
+        $lessonCounter[] = 0;
     }
 
     $lessonCount = count($lessonsList);
@@ -52,10 +54,11 @@ if (isset ($_GET["attendanceId"])) {
         }
 
         $studentPosition = array_search($student, $studentsList);
-        $lessonPosition = array_search(nl2br($lesson), $lessonsList);
+        $lessonPosition = array_search($lesson, $lessonsList);
 
         $attendanceMatrix[$studentPosition][$lessonPosition] = 1;
         $attCounter[$studentPosition] += 1;
+        $lessonCounter[$lessonPosition] += 1;
     }
 
     // foreach ($attendanceMatrix as $row) {
@@ -71,6 +74,7 @@ if (isset ($_GET["attendanceId"])) {
     $payload = array();
     $payload["lessonsIds"] = $lessonsIds;
     $payload["lessons"] = $lessonsList;
+    $payload["lessonsCount"] = $lessonCounter;
     $payload["students"] = $studentsList;
     $payload["attPerc"] = $attCounter;
     $payload["attMatrix"] = $attendanceMatrix;

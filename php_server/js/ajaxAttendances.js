@@ -6,6 +6,8 @@ function ajaxGetAttendances(formID) {
 
             // AJAX call
             $.get('script/generateAttendanceMatrix.php?'+$("#"+formID).serialize(), function (data) {
+
+                // CREATE ATTENDANCES TABLE
                 
                 // Clear dataTable
                 if ($.fn.dataTable.isDataTable('#attTable')) {
@@ -77,6 +79,61 @@ function ajaxGetAttendances(formID) {
                         { text: 'Cancella Lezione', action:function(){$('#RemoveLessonModal').modal('show');} }
 
                     ]
+                });
+
+                // CREATE ATTENDANCES CHART
+
+                var ctx = document.getElementById('attChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                    type: 'line',
+                    
+
+                    // The data for our dataset
+                    data: {
+                        labels: data["lessons"],
+                        datasets: [{
+                            label: "Numero presenze",
+                            backgroundColor: '#add2eb',
+                            borderColor: '#3189C8',
+                            data: data["lessonsCount"],
+                            pointBackgroundColor: '#143752',
+                            pointBorderColor:'#143752',
+                            pointRadius: 5,
+                        }]
+                    },
+
+                    // Configuration options
+                    options: {
+                        maintainAspectRatio: false,
+                        title: {
+                            display: true,
+                            text: tableTitle
+                        },
+                        scales: {
+                            yAxes: [{
+                              ticks: {
+                                stepSize: 1
+                              },
+                              scaleLabel: {
+                                display: true,
+                                labelString: 'Numero presenze',
+                                fontSize: 18
+                              }
+                            }],
+                            xAxes: [{
+                                ticks: {
+                                    display: false
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Lezioni',
+                                    fontSize: 18
+                                  }
+                            }]
+                          }
+                        
+                    }
                 });
                
 
