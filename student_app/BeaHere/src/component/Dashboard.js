@@ -36,7 +36,7 @@ export default class Dashboard extends React.Component {
   }
 
   onPressAttendanceButton = () => {
-    Alert.alert('Do you want mark your self to ' + this.state.selectedItem + ' ?', '',
+    Alert.alert('Lesson: ' + this.state.selectedItem + ' ?', '',
       [
         { text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
         { text: 'Yes', onPress: () => this.attendanceIsOkay() },
