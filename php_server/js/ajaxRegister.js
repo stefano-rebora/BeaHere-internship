@@ -1,4 +1,4 @@
-function ajaxGetRegister(formID) {
+function ajaxGetRegister(formID, registerTitle) {
     $(document).ready(function () {
 
         $("#"+formID).on('submit',function (e) {
@@ -21,6 +21,7 @@ function ajaxGetRegister(formID) {
 
                 var tableTitle = $("#registerId option:selected").text();
                 $("#tableCaption").text(tableTitle);
+                $("#registerTitle").text("Registro Prof. "+ registerTitle);
 
                 // Add lessons rows
                 $.each(data["lessons"], function (l, item) {

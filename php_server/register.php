@@ -30,7 +30,7 @@ require 'script/utilities.php';
         // ajax functions for dropdown courses list loading
         ajaxDropdownUpdate('<?php if ($_SESSION["userId"]== "admin") echo "all"; else echo $_SESSION['userId'];?>', "course", "registerId");
 
-        ajaxGetRegister("registerForm");
+        ajaxGetRegister("registerForm",'<?php echo $_SESSION['name']." ".$_SESSION['surname'] ?>');
 
     </script>
 </head>
@@ -56,6 +56,7 @@ require 'script/utilities.php';
                 <br>
                 <br>
             </form>
+            <h3><span id="registerTitle" class="badge badge-secondary register-header"></span></h1>
             <div class="table-responsive">
                 <table class="table table-striped top" id="attTable">
                     <caption id="tableCaption"></caption>
