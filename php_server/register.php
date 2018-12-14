@@ -1,6 +1,9 @@
 <?php 
 session_start();
-if (!isset($_SESSION["userId"]))  exit ('Permission denied');
+if (!isset($_SESSION["userId"])){
+    header("Location:index.php");
+    exit ();
+}
 require 'script/utilities.php';
 
 ?>
