@@ -56,6 +56,17 @@ Create table attendance (
     foreign key(lesson_date, lesson_minor_id) references lesson(date, minor_id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+CREATE VIEW lessonPerCourse AS
+	SELECT course.id as course_id, course.name as course_name, course.academic_year, count(*) as num_lessons
+	FROM (course JOIN lesson ON course.id = lesson.course_id)
+	GROUP BY course.id;
+
+CREATE VIEW attendancePerStudent AS
+	SELECT c.id as course_id, c.academic_year, s.id as student_id ,count(*) as num_attend
+	FROM student s JOIN attendance a ON s.id = a.student_id JOIN lesson l ON a.lesson_date = l.date AND a.lesson_minor_id = l.minor_id JOIN course c ON l.course_id = c.id
+	GROUP BY c.id, s.id ORDER BY c.id;
+
+
 
 
 --
