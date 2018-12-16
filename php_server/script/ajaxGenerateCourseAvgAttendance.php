@@ -4,9 +4,18 @@ session_start();
 if (!isset($_SESSION["userId"]))  exit ('Permission denied');
 require 'utilities.php';
 
-if (isset ($_GET["attendanceAcademicYear"])) {
+if (isset ($_GET["courseYearRecap"])) {
 
-    $academicYear = sanitize_input($_GET["attendanceAcademicYear"]);
+    $academicYear = sanitize_input($_GET["courseYearRecap"]);
+
+    // check if the academic year is valid
+    if (!preg_match("/^[0-9]{4}-[0-9]{4}$/",$academicYear)) {
+      $error = "Anno accademico non valido: il formato deve essere yyyy-yyyy (es. 2017-2018)";
+      $payload = array();
+      $payload["error"] = $error;
+      echo json_encode($payload);
+      exit();
+      }
 
     $connection= startConnection();
 

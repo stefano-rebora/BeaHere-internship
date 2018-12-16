@@ -1,3 +1,5 @@
+var chart;
+
 function ajaxGetAttendances(formID) {
     $(document).ready(function () {
 
@@ -84,7 +86,10 @@ function ajaxGetAttendances(formID) {
                 // CREATE ATTENDANCES CHART
 
                 var ctx = document.getElementById('attChart').getContext('2d');
-                var chart = new Chart(ctx, {
+                if (chart) {
+                    chart.destroy();
+                }
+                chart = new Chart(ctx, {
                 // The type of chart we want to create
                     type: 'line',
                     

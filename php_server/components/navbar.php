@@ -28,6 +28,9 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="./attendances.php">Gestisci presenze</a>
+                    <?php if ($_SESSION["userId"]== "admin") { ?>
+                    <a class="dropdown-item" href="./admin-attendances.php">Visualizza statistiche anno accademico</a>
+                    <?php } ?>
                 </div>
             </li>
             <li class="nav-item dropdown">
