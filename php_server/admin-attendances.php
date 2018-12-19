@@ -1,7 +1,6 @@
 <?php 
 session_start();
-if (!isset($_SESSION["userId"]) && $_SESSION["userId"] != "admin")  exit ('Permission denied');  
-require 'script/utilities.php';
+if (!isset($_SESSION["userId"]) && $_SESSION["userId"] != "admin")  exit ('Permission denied');
 
 ?>
 <!doctype html>

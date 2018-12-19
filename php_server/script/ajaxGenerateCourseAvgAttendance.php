@@ -27,7 +27,7 @@ if (isset ($_GET["courseYearRecap"])) {
 
     // Get the list of total number of lessons per course
 
-    $stm = $connection->prepare("SELECT course_id, course_name, num_lessons FROM lessonpercourse WHERE academic_year = ? ORDER BY course_id") ;
+    $stm = $connection->prepare("SELECT course_id, course_name, num_lessons FROM lessonPerCourse WHERE academic_year = ? ORDER BY course_id") ;
     $res = $stm->bind_param("s" , $academicYear) ;
     $res = $stm->execute();
     $stm->bind_result($course_id,$course_name,$num_lessons);
@@ -44,7 +44,7 @@ if (isset ($_GET["courseYearRecap"])) {
 
 
     // Get the list of avg number of attendances per course
-    $stm = $connection->prepare("SELECT course_id, AVG(num_attend) FROM attendanceperstudent WHERE academic_year = ? GROUP BY course_id ORDER BY course_id;") ;
+    $stm = $connection->prepare("SELECT course_id, AVG(num_attend) FROM attendancePerStudent WHERE academic_year = ? GROUP BY course_id ORDER BY course_id;") ;
     $res = $stm->bind_param("s" , $academicYear) ;
     $res = $stm->execute();
     $stm->bind_result($course_id, $avg_num_attendances);
