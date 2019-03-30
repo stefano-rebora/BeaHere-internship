@@ -32,6 +32,7 @@ Create table teaching (
 
 Create table lesson (
 	id int not null AUTO_INCREMENT,
+	room_id int not null,
     date date not null,
     minor_id int(6) not null,
     start time not null,
@@ -102,25 +103,27 @@ INSERT INTO `teaching` (`professor_id`, `course_id`) VALUES
 -- Dump dei dati per la tabella `student`
 --
 
-INSERT INTO `student` (`id`, `name`, `surname`, `email`, `device_id`, `password`) VALUES
-(4089451, 'Giacomo', 'Masi', 'email@email.it', 'numero imei1', 'password'),
-(4089450, 'Stefano', 'Rebora', 'email@email.it', 'numero imei2', 'password'),
-(4089452, 'Andrea', 'Canepa', 'email@email.it', 'numero imei3', 'password');
+INSERT INTO `student` (`id`, `name`, `surname`, `email`, `device_id`, `last_imei_change`, `password`) VALUES
+(3089450, 'studente1', 'studente1', 'email@email.it', '1abcdef1', '2019-02-25', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6'),
+(3089451, 'studente2', 'studente2', 'email@email.it', '1abcdef1g', '2019-03-16', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6'),
+(4089450, 'Stefano', 'Rebora', 'email@email.it', 'numero imei2', '0000-00-00', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6'),
+(4089451, 'Giacomo', 'Masi', 'email@email.it', 'numero imei1', '0000-00-00', 'password'),
+(4089452, 'Andrea', 'Canepa', 'email@email.it', 'numero imei3', '0000-00-00', 'password');
 
 --
 -- Dump dei dati per la tabella `lesson`
 --
 
-INSERT INTO `lesson` (`date`, `minor_id`, `start`, `end`, `course_id`,`professor_id`,`note`) VALUES
-('2018-10-01', 123456, '09:00:00', '11:00:00', 12345, 1234567, "note lezione"),
-('2018-10-01', 123457, '09:00:00', '10:00:00', 90549, 1234567, "note lezione"),
-('2018-10-02', 123456, '16:00:00', '18:00:00', 12345, 1234567, "note lezione"),
-('2018-10-02', 123457, '15:00:00', '17:00:00', 90549, 1234567, "note lezione"),
-('2018-11-01', 123456, '09:00:00', '11:00:00', 90549, 1234567, "note lezione"),
-('2018-11-04', 123456, '15:00:00', '18:00:00', 90549, 1234567, "note lezione"),
-('2018-11-06', 123456, '15:00:00', '17:00:00', 90549, 1234567, "note lezione"),
-('2018-11-07', 123456, '09:00:00', '11:00:00', 90549, 1234567, "note lezione"),
-('2018-11-13', 123456, '15:00:00', '18:00:00', 90549, 1234567, "note lezione");
+INSERT INTO `lesson` (`room_id`,`date`, `minor_id`, `start`, `end`, `course_id`,`professor_id`,`note`) VALUES
+(506,'2018-10-01', 123456, '09:00:00', '11:00:00', 12345, 1234567, "note lezione"),
+(506,'2018-10-01', 123457, '09:00:00', '10:00:00', 90549, 1234567, "note lezione"),
+(506,'2018-10-02', 123456, '16:00:00', '18:00:00', 12345, 1234567, "note lezione"),
+(506,'2018-10-02', 123457, '15:00:00', '17:00:00', 90549, 1234567, "note lezione"),
+(506,'2018-11-01', 123456, '09:00:00', '11:00:00', 90549, 1234567, "note lezione"),
+(506,'2018-11-04', 123456, '15:00:00', '18:00:00', 90549, 1234567, "note lezione"),
+(506,'2018-11-06', 123456, '15:00:00', '17:00:00', 90549, 1234567, "note lezione"),
+(506,'2018-11-07', 123456, '09:00:00', '11:00:00', 90549, 1234567, "note lezione"),
+(506,'2018-11-13', 123456, '15:00:00', '18:00:00', 90549, 1234567, "note lezione");
 
 --
 -- Dump dei dati per la tabella `attendance`
