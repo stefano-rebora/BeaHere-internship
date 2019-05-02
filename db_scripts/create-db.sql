@@ -106,9 +106,9 @@ INSERT INTO `teaching` (`professor_id`, `course_id`) VALUES
 INSERT INTO `student` (`id`, `name`, `surname`, `email`, `device_id`, `last_imei_change`, `password`) VALUES
 (3089450, 'studente1', 'studente1', 'email@email.it', '1abcdef1', '2019-02-25', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6'),
 (3089451, 'studente2', 'studente2', 'email@email.it', '1abcdef1g', '2019-03-16', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6'),
-(4089450, 'Stefano', 'Rebora', 'email@email.it', 'numero imei2', '0000-00-00', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6'),
-(4089451, 'Giacomo', 'Masi', 'email@email.it', 'numero imei1', '0000-00-00', 'password'),
-(4089452, 'Andrea', 'Canepa', 'email@email.it', 'numero imei3', '0000-00-00', 'password');
+(4089450, 'Stefano', 'Rebora', 'email@email.it', 'numero imei2', '2000-01-01', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6'),
+(4089451, 'Giacomo', 'Masi', 'email@email.it', 'numero imei1', '2000-01-01', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6'),
+(4089452, 'Andrea', 'Canepa', 'email@email.it', 'numero imei3', '2000-01-01', '$2y$10$SXBsJNSsDRJxOLni2Hegj.qzuY5UyDYdfKMsnMsGjthrw0UFGMdN6');
 
 --
 -- Dump dei dati per la tabella `lesson`
