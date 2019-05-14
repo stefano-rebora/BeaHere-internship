@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    check_empty($_POST["courseName"] , "Nome corso" , $_SESSION["message"]);
    $courseName = sanitize_input($_POST["courseName"]);
    // check if name only contains letters
-   if (!preg_match("/^[a-zA-Z' ]*$/",$courseName)) {
+   if (!preg_match("/^[a-zA-Z' 0-9]*$/",$courseName)) {
      $noErrors = false;
      $_SESSION["message"] ="Nome corso non valido: consentite solo lettere alfabetiche";
    }
